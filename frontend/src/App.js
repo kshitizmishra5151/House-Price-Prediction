@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-// Render Backend URL
-const API_URL = "https://house-price-prediction-1lrz.onrender.com";
+const API_URL = "https://house-price-prediction-11rz.onrender.com";
 
 function App() {
   const [locations, setLocations] = useState([]);
@@ -10,26 +9,26 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
-    bhk: '',
-    type: 'Independent',
-    area_sq_ft: '',
-    location: '',
-    bathrooms: '',
-    carpet_area: '',
-    status: 'StatusReady'
+    bhk: "",
+    type: "Independent",
+    area_sq_ft: "",
+    location: "",
+    bathrooms: "",
+    carpet_area: "",
+    status: "StatusReady",
   });
 
   useEffect(() => {
     axios
       .get(`${API_URL}/locations`)
-      .then(res => setLocations(res.data))
-      .catch(err => console.error(err));
+      .then((res) => setLocations(res.data))
+      .catch((err) => console.error("Error loading locations:", err));
   }, []);
 
   const handleChange = (e) =>
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
 
   const handlePredict = async (e) => {
@@ -37,15 +36,11 @@ function App() {
     setLoading(true);
 
     try {
-      const res = await axios.post(
-        `${API_URL}/predict`,
-        formData
-      );
-
+      const res = await axios.post(`${API_URL}/predict`, formData);
       setPrediction(res.data.predicted_price_lakhs);
     } catch (err) {
       console.error(err);
-      alert("Unable to connect to backend.");
+      alert("Prediction failed. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -68,13 +63,14 @@ function App() {
 
             <select
               name="location"
+              value={formData.location}
               onChange={handleChange}
               style={styles.select}
               required
             >
               <option value="">-- Choose Area --</option>
 
-              {locations.map(loc => (
+              {locations.map((loc) => (
                 <option key={loc} value={loc}>
                   {loc}
                 </option>
@@ -84,10 +80,9 @@ function App() {
 
           <div style={styles.inputGroup}>
             <label style={styles.label}>BHK</label>
-
             <input
-              type="number"
               name="bhk"
+              type="number"
               placeholder="e.g. 3"
               onChange={handleChange}
               style={styles.input}
@@ -97,10 +92,9 @@ function App() {
 
           <div style={styles.inputGroup}>
             <label style={styles.label}>Bathrooms</label>
-
             <input
-              type="number"
               name="bathrooms"
+              type="number"
               placeholder="e.g. 2"
               onChange={handleChange}
               style={styles.input}
@@ -110,10 +104,9 @@ function App() {
 
           <div style={styles.inputGroup}>
             <label style={styles.label}>Total Area (Sq Ft)</label>
-
             <input
-              type="number"
               name="area_sq_ft"
+              type="number"
               placeholder="Total"
               onChange={handleChange}
               style={styles.input}
@@ -123,10 +116,9 @@ function App() {
 
           <div style={styles.inputGroup}>
             <label style={styles.label}>Carpet Area (Sq Ft)</label>
-
             <input
-              type="number"
               name="carpet_area"
+              type="number"
               placeholder="Usable"
               onChange={handleChange}
               style={styles.input}
@@ -139,6 +131,7 @@ function App() {
 
             <select
               name="type"
+              value={formData.type}
               onChange={handleChange}
               style={styles.select}
             >
@@ -152,6 +145,7 @@ function App() {
 
             <select
               name="status"
+              value={formData.status}
               onChange={handleChange}
               style={styles.select}
             >
@@ -165,22 +159,18 @@ function App() {
             style={loading ? styles.buttonLoading : styles.button}
             disabled={loading}
           >
-            {loading ? "Processing ML Weights..." : "Generate Prediction"}
+            {loading ? "Processing ML Model..." : "Generate Prediction"}
           </button>
         </form>
 
-        {prediction && (
+        {prediction !== null && (
           <div style={styles.resultContainer}>
-            <p style={styles.resultLabel}>
-              Estimated Market Value
-            </p>
+            <p style={styles.resultLabel}>Estimated Market Value</p>
 
             <div style={styles.priceTag}>
               <span style={styles.currencySymbol}>₹</span>
-              {" "}
               {prediction}
-              {" "}
-              <span style={styles.unit}>Lakhs</span>
+              <span style={styles.unit}> Lakhs</span>
             </div>
           </div>
         )}
@@ -191,167 +181,161 @@ function App() {
 
 const styles = {
   pageBackground: {
-    minHeight: '100vh',
-    background: 'linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontFamily: "'Inter', sans-serif",
-    position: 'relative',
-    overflow: 'hidden'
+    minHeight: "100vh",
+    background: "linear-gradient(135deg,#1a2a6c,#b21f1f,#fdbb2d)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontFamily: "Inter,sans-serif",
+    position: "relative",
+    overflow: "hidden",
   },
 
   circle1: {
-    position: 'absolute',
-    width: '300px',
-    height: '300px',
-    background: 'rgba(255,255,255,0.1)',
-    borderRadius: '50%',
-    top: '-50px',
-    right: '-50px'
+    position: "absolute",
+    width: 300,
+    height: 300,
+    background: "rgba(255,255,255,.1)",
+    borderRadius: "50%",
+    top: -50,
+    right: -50,
   },
 
   circle2: {
-    position: 'absolute',
-    width: '200px',
-    height: '200px',
-    background: 'rgba(255,255,255,0.1)',
-    borderRadius: '50%',
-    bottom: '20px',
-    left: '-50px'
+    position: "absolute",
+    width: 200,
+    height: 200,
+    background: "rgba(255,255,255,.1)",
+    borderRadius: "50%",
+    bottom: 20,
+    left: -50,
   },
 
   glassCard: {
-    background: 'rgba(255,255,255,0.15)',
-    backdropFilter: 'blur(15px)',
-    WebkitBackdropFilter: 'blur(15px)',
-    borderRadius: '24px',
-    border: '1px solid rgba(255,255,255,0.2)',
-    padding: '40px',
-    width: '500px',
-    color: 'white',
-    boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
-    zIndex: 10
+    background: "rgba(255,255,255,.15)",
+    backdropFilter: "blur(15px)",
+    WebkitBackdropFilter: "blur(15px)",
+    borderRadius: 24,
+    border: "1px solid rgba(255,255,255,.2)",
+    padding: 40,
+    width: 500,
+    color: "white",
+    boxShadow: "0 25px 50px rgba(0,0,0,.5)",
+    zIndex: 10,
   },
 
   header: {
-    textAlign: 'center',
-    marginBottom: '30px'
+    textAlign: "center",
+    marginBottom: 30,
   },
 
   mainTitle: {
-    fontSize: '28px',
-    fontWeight: '800',
+    fontSize: 28,
+    fontWeight: 800,
     margin: 0,
-    letterSpacing: '-0.5px'
   },
 
   badge: {
-    fontSize: '12px',
-    background: '#00d2ff',
-    padding: '2px 8px',
-    borderRadius: '4px',
-    textTransform: 'uppercase'
+    background: "#00d2ff",
+    padding: "3px 10px",
+    borderRadius: 5,
+    fontSize: 12,
+    textTransform: "uppercase",
   },
 
   formGrid: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '20px'
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: 20,
   },
 
   inputGroupFull: {
-    gridColumn: 'span 2',
-    display: 'flex',
-    flexDirection: 'column'
+    gridColumn: "span 2",
+    display: "flex",
+    flexDirection: "column",
   },
 
   inputGroup: {
-    display: 'flex',
-    flexDirection: 'column'
+    display: "flex",
+    flexDirection: "column",
   },
 
   label: {
-    fontSize: '11px',
-    textTransform: 'uppercase',
-    letterSpacing: '1px',
-    marginBottom: '8px',
-    fontWeight: 'bold',
-    opacity: 0.9
+    fontSize: 11,
+    marginBottom: 8,
+    textTransform: "uppercase",
+    fontWeight: "bold",
   },
 
   input: {
-    padding: '12px',
-    borderRadius: '10px',
-    border: '1px solid rgba(255,255,255,0.2)',
-    background: 'rgba(255,255,255,0.1)',
-    color: 'white',
-    fontSize: '14px',
-    outline: 'none'
+    padding: 12,
+    borderRadius: 10,
+    border: "1px solid rgba(255,255,255,.2)",
+    background: "rgba(255,255,255,.1)",
+    color: "white",
+    outline: "none",
   },
 
   select: {
-    padding: '12px',
-    borderRadius: '10px',
-    border: '1px solid rgba(255,255,255,0.2)',
-    background: 'rgba(255,255,255,0.1)',
-    color: 'white',
-    fontSize: '14px',
-    outline: 'none'
+    padding: 12,
+    borderRadius: 10,
+    border: "1px solid rgba(255,255,255,.2)",
+    background: "rgba(255,255,255,.1)",
+    color: "white",
+    outline: "none",
   },
 
   button: {
-    gridColumn: 'span 2',
-    padding: '15px',
-    marginTop: '10px',
-    borderRadius: '12px',
-    border: 'none',
-    background: '#ffffff',
-    color: '#b21f1f',
-    fontWeight: '900',
-    fontSize: '15px',
-    cursor: 'pointer'
+    gridColumn: "span 2",
+    marginTop: 10,
+    padding: 15,
+    borderRadius: 12,
+    border: "none",
+    background: "white",
+    color: "#b21f1f",
+    fontWeight: 700,
+    cursor: "pointer",
   },
 
   buttonLoading: {
-    gridColumn: 'span 2',
-    padding: '15px',
-    marginTop: '10px',
-    borderRadius: '12px',
-    border: 'none',
-    background: '#ccc',
-    color: '#666'
+    gridColumn: "span 2",
+    marginTop: 10,
+    padding: 15,
+    borderRadius: 12,
+    border: "none",
+    background: "#ccc",
+    color: "#666",
+    cursor: "wait",
   },
 
   resultContainer: {
-    marginTop: '30px',
-    textAlign: 'center',
-    background: 'rgba(0,0,0,0.2)',
-    padding: '25px',
-    borderRadius: '20px'
+    marginTop: 30,
+    textAlign: "center",
+    background: "rgba(0,0,0,.2)",
+    padding: 25,
+    borderRadius: 20,
   },
 
   resultLabel: {
-    fontSize: '12px',
-    textTransform: 'uppercase',
-    color: '#00d2ff',
-    fontWeight: 'bold'
+    color: "#00d2ff",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    fontSize: 12,
   },
 
   priceTag: {
-    fontSize: '42px',
-    fontWeight: '900'
+    fontSize: 42,
+    fontWeight: 900,
   },
 
   currencySymbol: {
-    fontSize: '24px',
-    opacity: 0.6
+    fontSize: 24,
   },
 
   unit: {
-    fontSize: '20px',
-    opacity: 0.6
-  }
+    fontSize: 20,
+    opacity: 0.7,
+  },
 };
 
 export default App;
