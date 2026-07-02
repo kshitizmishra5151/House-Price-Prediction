@@ -1,70 +1,262 @@
-# Getting Started with Create React App
+# 🏠 NestWorth – House Price Prediction System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack Machine Learning web application that predicts residential property prices in **Lucknow** using an ensemble of machine learning models.
 
-## Available Scripts
+![React](https://img.shields.io/badge/Frontend-React-61DAFB?logo=react)
+![Flask](https://img.shields.io/badge/Backend-Flask-000000?logo=flask)
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
+![Scikit Learn](https://img.shields.io/badge/Scikit--Learn-ML-orange?logo=scikitlearn)
+![Vercel](https://img.shields.io/badge/Frontend-Vercel-black?logo=vercel)
+![Render](https://img.shields.io/badge/Backend-Render-46E3B7?logo=render)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Live Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Frontend
+https://YOUR-VERCEL-URL.vercel.app
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Backend API
+https://YOUR-RENDER-URL.onrender.com
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📖 Overview
 
-### `npm run build`
+NestWorth is an AI-powered property price prediction platform built using:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React.js frontend
+- Flask REST API
+- Ensemble Machine Learning model
+- Deployment on Vercel and Render
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Users can enter property details such as:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Location
+- BHK
+- Bathrooms
+- Total Area
+- Carpet Area
+- Property Type
+- Construction Status
 
-### `npm run eject`
+The application predicts the estimated market value in Lakhs.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# ✨ Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Modern responsive UI
+- Location dropdown populated from dataset
+- Ensemble ML prediction
+- REST API
+- Real-time prediction
+- Cloud deployment
+- Cross-Origin enabled (CORS)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+# 🧠 Machine Learning Model
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The prediction is generated using an ensemble of:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- XGBoost Regressor
+- Random Forest Regressor
+- Linear Regression
 
-### Code Splitting
+Final Prediction:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+50% XGBoost
+30% Random Forest
+20% Linear Regression
+```
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# 🏗 Project Structure
 
-### Making a Progressive Web App
+```
+House-Price-Prediction
+│
+├── backend
+│   ├── app.py
+│   ├── model.pkl
+│   ├── train_model.py
+│   ├── lucknow_dataset.csv
+│   └── requirements.txt
+│
+├── frontend
+│   ├── src
+│   ├── public
+│   ├── package.json
+│   └── ...
+│
+└── README.md
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+# ⚙️ Tech Stack
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Frontend
+
+- React.js
+- CSS
+- Fetch API
+
+### Backend
+
+- Flask
+- Flask-CORS
+- Pandas
+- NumPy
+
+### Machine Learning
+
+- Scikit-Learn
+- XGBoost
+- Random Forest
+- Linear Regression
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Vercel
+- Render
+- GitHub
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# 📊 Input Parameters
+
+| Feature | Description |
+|----------|-------------|
+| Location | Area in Lucknow |
+| BHK | Number of Bedrooms |
+| Bathrooms | Number of Bathrooms |
+| Total Area | Total Area (sq ft) |
+| Carpet Area | Carpet Area (sq ft) |
+| Property Type | Apartment / Independent etc. |
+| Status | Ready to Move / Under Construction |
+
+---
+
+# 🔥 API Endpoints
+
+### Get Locations
+
+```
+GET /locations
+```
+
+Returns all available locations.
+
+### Predict Price
+
+```
+POST /predict
+```
+
+Example JSON
+
+```json
+{
+    "location":"Gomti Nagar",
+    "bhk":3,
+    "bathrooms":2,
+    "area_sq_ft":1500,
+    "carpet_area":1200,
+    "type":"Independent",
+    "status":"Ready to Move"
+}
+```
+
+Response
+
+```json
+{
+    "price":48.07
+}
+```
+
+---
+
+# 💻 Run Locally
+
+## Clone Repository
+
+```bash
+git clone https://github.com/kshitizmishra5151/House-Price-Prediction.git
+```
+
+## Backend
+
+```bash
+cd backend
+
+pip install -r requirements.txt
+
+python app.py
+```
+
+Runs on
+
+```
+http://localhost:5001
+```
+
+---
+
+## Frontend
+
+```bash
+cd frontend
+
+npm install
+
+npm start
+```
+
+Runs on
+
+```
+http://localhost:3000
+```
+
+---
+
+# 📸 Screenshots
+
+### Home Page
+
+### 🏠 Home Page
+
+![Home Page](assets/homepage.png)
+
+---
+
+### 📈 Prediction Result
+
+![Prediction Result](assets/prediction.png)
+
+### Prediction Result
+
+![alt text](< prediction.png>)
+
+---
+
+# 👨‍💻 Author
+
+**Kshitiz Mishra**
+
+GitHub:
+https://github.com/kshitizmishra5151
+
+LinkedIn:
+(Add your LinkedIn)
+
+---
+
+# 📄 License
+
+This project is developed for educational and portfolio purposes.
