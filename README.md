@@ -14,10 +14,10 @@ A full-stack Machine Learning web application that predicts residential property
 ## 🚀 Live Demo
 
 ### Frontend
-https://YOUR-VERCEL-URL.vercel.app
+https://house-price-prediction-xi-six.vercel.app/
 
 ### Backend API
-https://YOUR-RENDER-URL.onrender.com
+coming soon
 
 ---
 
