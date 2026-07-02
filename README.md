@@ -227,8 +227,6 @@ http://localhost:3000
 
 # 📸 Screenshots
 
-### Home Page
-
 ### 🏠 Home Page
 
 ![Home Page](assets/homepage.png)
@@ -238,10 +236,6 @@ http://localhost:3000
 ### 📈 Prediction Result
 
 ![Prediction Result](assets/prediction.png)
-
-### Prediction Result
-
-![alt text](< prediction.png>)
 
 ---
 
