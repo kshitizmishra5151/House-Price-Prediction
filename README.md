@@ -1,4 +1,4 @@
-# 🏠 NestWorth – House Price Prediction System
+# 🏠 NestWorth – Lucknow House Price Prediction System
 
 A full-stack Machine Learning web application that predicts residential property prices in **Lucknow** using an ensemble of machine learning models.
 
@@ -11,23 +11,23 @@ A full-stack Machine Learning web application that predicts residential property
 
 ---
 
-## 🚀 Live Demo
+# 🚀 Live Demo
 
-### Frontend
+### 🌐 Frontend
 https://house-price-prediction-xi-six.vercel.app/
 
-### Backend API
-coming soon
+### ⚙️ Backend API
+https://house-price-prediction-11rz.onrender.com/
 
 ---
 
-## 📖 Overview
+# 📖 Overview
 
 NestWorth is an AI-powered property price prediction platform built using:
 
-- React.js frontend
+- React.js Frontend
 - Flask REST API
-- Ensemble Machine Learning model
+- Ensemble Machine Learning Model
 - Deployment on Vercel and Render
 
 Users can enter property details such as:
@@ -44,15 +44,26 @@ The application predicts the estimated market value in Lakhs.
 
 ---
 
+# 🌟 Project Highlights
+
+- 🤖 Ensemble Machine Learning Model
+- ⚛️ Modern React.js Frontend
+- 🐍 Flask REST API
+- ☁️ Cloud Deployment using Vercel & Render
+- 📍 Location-based House Price Prediction
+- 📊 Real-time Price Estimation
+
+---
+
 # ✨ Features
 
-- Modern responsive UI
-- Location dropdown populated from dataset
-- Ensemble ML prediction
+- Modern Responsive UI
+- Dynamic Location Dropdown
+- Ensemble ML Prediction
 - REST API
-- Real-time prediction
-- Cloud deployment
-- Cross-Origin enabled (CORS)
+- Real-time House Price Prediction
+- Cloud Deployment
+- Cross-Origin Enabled (CORS)
 
 ---
 
@@ -64,9 +75,9 @@ The prediction is generated using an ensemble of:
 - Random Forest Regressor
 - Linear Regression
 
-Final Prediction:
+### Ensemble Weights
 
-```
+```text
 50% XGBoost
 30% Random Forest
 20% Linear Regression
@@ -76,7 +87,7 @@ Final Prediction:
 
 # 🏗 Project Structure
 
-```
+```text
 House-Price-Prediction
 │
 ├── backend
@@ -92,6 +103,10 @@ House-Price-Prediction
 │   ├── package.json
 │   └── ...
 │
+├── assets
+│   ├── homepage.png
+│   └── prediction.png
+│
 └── README.md
 ```
 
@@ -99,31 +114,31 @@ House-Price-Prediction
 
 # ⚙️ Tech Stack
 
-### Frontend
+## Frontend
 
 - React.js
 - CSS
-- Fetch API
+- Axios
 
-### Backend
+## Backend
 
 - Flask
 - Flask-CORS
 - Pandas
 - NumPy
 
-### Machine Learning
+## Machine Learning
 
 - Scikit-Learn
 - XGBoost
 - Random Forest
 - Linear Regression
 
-### Deployment
+## Deployment
 
-- Vercel
-- Render
 - GitHub
+- Render
+- Vercel
 
 ---
 
@@ -134,48 +149,50 @@ House-Price-Prediction
 | Location | Area in Lucknow |
 | BHK | Number of Bedrooms |
 | Bathrooms | Number of Bathrooms |
-| Total Area | Total Area (sq ft) |
-| Carpet Area | Carpet Area (sq ft) |
-| Property Type | Apartment / Independent etc. |
+| Total Area | Total Area (Sq Ft) |
+| Carpet Area | Carpet Area (Sq Ft) |
+| Property Type | Apartment / Independent |
 | Status | Ready to Move / Under Construction |
 
 ---
 
 # 🔥 API Endpoints
 
-### Get Locations
+## Get Locations
 
-```
+```http
 GET /locations
 ```
 
 Returns all available locations.
 
-### Predict Price
+---
 
-```
+## Predict Price
+
+```http
 POST /predict
 ```
 
-Example JSON
+Example Request
 
 ```json
 {
-    "location":"Gomti Nagar",
-    "bhk":3,
-    "bathrooms":2,
-    "area_sq_ft":1500,
-    "carpet_area":1200,
-    "type":"Independent",
-    "status":"Ready to Move"
+  "location": "Gomti Nagar",
+  "bhk": 3,
+  "bathrooms": 2,
+  "area_sq_ft": 1500,
+  "carpet_area": 1200,
+  "type": "Independent",
+  "status": "Ready to Move"
 }
 ```
 
-Response
+Example Response
 
 ```json
 {
-    "price":48.07
+  "predicted_price_lakhs": 48.07
 }
 ```
 
@@ -189,6 +206,8 @@ Response
 git clone https://github.com/kshitizmishra5151/House-Price-Prediction.git
 ```
 
+---
+
 ## Backend
 
 ```bash
@@ -201,7 +220,7 @@ python app.py
 
 Runs on
 
-```
+```text
 http://localhost:5001
 ```
 
@@ -219,7 +238,7 @@ npm start
 
 Runs on
 
-```
+```text
 http://localhost:3000
 ```
 
@@ -227,27 +246,44 @@ http://localhost:3000
 
 # 📸 Screenshots
 
-### 🏠 Home Page
+## 🏠 Home Page
 
 ![Home Page](assets/homepage.png)
 
 ---
 
-### 📈 Prediction Result
+## 📈 Prediction Result
 
 ![Prediction Result](assets/prediction.png)
 
 ---
 
+# 🚀 Future Improvements
+
+- User Authentication
+- Interactive Price Trend Charts
+- Multiple City Support
+- Google Maps Integration
+- Model Retraining Pipeline
+- Property Recommendation System
+
+---
+
 # 👨‍💻 Author
 
-**Kshitiz Mishra**
+**Kshitiz Kumar Mishra**
 
-GitHub:
+GitHub  
 https://github.com/kshitizmishra5151
 
-LinkedIn:
-(Add your LinkedIn)
+LinkedIn  
+https://www.linkedin.com/in/kshitiz-kumar-mishra-155533293/
+
+---
+
+# ⭐ Support
+
+If you found this project useful, consider giving it a ⭐ on GitHub.
 
 ---
 
